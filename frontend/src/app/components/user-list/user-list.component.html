@@ -1,0 +1,66 @@
+<div class="form-vertical">
+  <div class="container">
+    <div class="card">
+      <form [formGroup]="userForm" class="form-vertical card-body" novalidate>
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+            <h3 class="panel-title">User Form</h3>
+          </div>
+          <label>First Name</label>
+          <input class="form-control" type="text" placeholder="Enter First Name" formControlName="firstName">
+        </div>
+        <div>
+          <label>Last Name</label>
+          <input type="text" class="form-control" placeholder="Enter Last Name" formControlName="lastName">
+        </div>
+        <div>
+          <label>Email</label>
+          <input type="text" placeholder="Enter Email" class="form-control" formControlName="email">
+        </div>
+        <div>
+          <label>Phone number</label>
+          <input type="number" placeholder="Enter Phone Number" class="form-control" formControlName="phoneNumber">
+        </div>
+        <br>
+        <div>
+          <button *ngIf="!editButton" type="submit" class="btn btn-primary" (click)="onSubmit(userForm)">Save</button>
+          <button *ngIf="editButton" type="submit" class="btn btn-primary" (click)="onRedirectToSubmit(userForm)">Update Data</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<br>
+<br>
+<hr>
+<div class="container">
+  <div class="card">
+    <div class="card-body">
+      <h3 class="card-title">Display User List</h3>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Firstname</th>
+            <th scope="col">Lastname</th>
+            <th scope="col">Email</th>
+            <th scope="col">Phone Number</th>
+            <th scope="col"> Actions </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of userData">
+
+            <td>{{user.firstName}}</td>
+            <td>{{user.lastName}}</td>
+            <td>{{user.email}}</td>
+            <td>{{user.phoneNumber}}</td>
+            <td>
+              <button class="btn btn-primary" (click)="onEdit(user)"> edit</button>
+              <button class="btn btn-primary" (click)="onDelete(user)">delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
